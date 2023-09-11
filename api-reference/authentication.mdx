@@ -15,13 +15,6 @@ All server-side requests must provide valid authentication credentials in their 
 
 Magic's e-commerce platform partners must securely access this data and exclusively use each merchant’s particular keys when performing requests on their behalf.
 
-The keys should be handed in as headers to the request:
-
-| Header Name  | Value |
-| -------- | ------- |
-| public-key  | <public_key_value>    |
-| x-api-key | <secret_key_value>     |
-
 ## Putting it Together: An Integration
 
 Magic Pay has two types of users: a merchant and a consumer. Each user has to authenticate in a different way.
