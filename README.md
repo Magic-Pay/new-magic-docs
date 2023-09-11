@@ -1,6 +1,6 @@
-# Mintlify Starter Kit
+# Magic's Mintlify Docs
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+The base of this includes:
 
 - Guide pages
 - Navigation
