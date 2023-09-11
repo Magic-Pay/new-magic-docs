@@ -1,17 +1,41 @@
 ---
 title: "Authentication"
-description: "Example overview page before API endpoints"
+description: "How to connect to Magic's services. Before you look at our API Endpoints."
 ---
 
-There is two types of users in magic pay.
+## Credentials at a high-level
 
-## API Token
+Magic assigns each merchant unique Public and Private API keys.
 
-Merchant: api key is use for authorize merchant,
-you can generate mercahnt api key from merhant object in django admin panel.
+### Client-Side API Authentication
+Providing your Public API key identifies your merchant account to Catch so that your account configuration is applied when Catch responds to your request.
+
+### Server-Side API Authentication
+All server-side requests must provide valid authentication credentials in their request headers. Server-side API requests require both a valid Public API key and a corresponding Private API key.
+
+Magic's e-commerce platform partners must securely access this data and exclusively use each merchant’s particular keys when performing requests on their behalf.
+
+The keys should be handed in as headers to the request:
+
+| Header Name  | Value |
+| -------- | ------- |
+| public-key  | <public_key_value>    |
+| x-api-key | <secret_key_value>     |
+
+## Putting it Together: An Integration
+
+Magic Pay has two types of users: a merchant and a consumer. Each user has to authenticate in a different way.
+
+### API Token
+
+Merchant
+- As mentioned before, merchants have to receive a pair of API keys.
+- Merchants onboarding can generate an API key from the Django Admin Panel while creating the "Merchant Object."
 
 
-## Authentication Token
+### Authentication Token
 
-Consumer: authentication token is use for authorize consumer user,
-you will get authentication token when you register user using phone number.
+Consumer
+- Consumers need two things to effectively use Magic: an authentication token when registering for Magic (made through Plaid), as well as a checkout ID that is unique to whichever unique time they're purchasing a product at the merchant's store.
+- Generally, an authentication token is made whenever a consumer creates an account with Magic using their phone number.
+- A merchant will have to auto-generate a checkout ID for each consumer when they checkout with the Magic product. This is tied into the backend and will be featured again later.
