@@ -22,7 +22,8 @@ The most important conceptual thing to understand is that there are three parts 
 ### Implementing the React Frontend Component
 As mentioned earlier, this is a simple React component that is compatible with any Javascript-based frontend. It's simply used as the point to activate the "Magic Link" product.
 
-`import "@magicpay/magicpay-js";
+```
+import "@magicpay/magicpay-js";
 
 function App() {
   const handleButtonClick = () => {
@@ -35,7 +36,8 @@ function App() {
   );
 }
 
-export default App;`
+export default App;
+```
 
 ### Using the Magic Link Button
 
@@ -44,12 +46,14 @@ When you're testing:
 2. To launch the Production Hosted page, omit `isSandbox` at tag.
 
 When sending a response after the conclusion of the Magic Hosted Page:
-To Send a Response after Operation in Onsuccess to hosted page, use `sendEventToChild` function with the argument response format of
-` response = {
+To Send a Response after Operation in Onsuccess to hosted page, use `sendEventToChild` function with the argument response format of:
+```
+response = {
 'type': 'SUCCESS_RESPONSE'
 'message': 'success message',
 },
 response = {
 'type': 'ERROR_RESPONSE',
 'message': 'error message,
-} `
+}
+```
