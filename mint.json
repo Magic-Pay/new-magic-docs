@@ -26,7 +26,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction", "quickstart"]
     },
     {
       "group": "Essentials",
@@ -34,10 +34,7 @@
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/authentication",
-        "api-reference/npm"
-      ]
+      "pages": ["api-reference/authentication"]
     },
 
     {
@@ -60,6 +57,12 @@
       "pages": [
         "api-reference/endpoint/manage_subscription/get_subscription_details",
         "api-reference/endpoint/manage_subscription/subscription_cancel"
+      ]
+    },
+    {
+      "group":"Get Processor Token",
+      "pages":[
+        "api-reference/endpoint/payment_preprocess/get_processor_token"
       ]
     },
     {
