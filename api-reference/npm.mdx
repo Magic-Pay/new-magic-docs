@@ -1,1 +1,55 @@
-### hello, world
+---
+title: "Authentication"
+description: "How to connect to Magic's services. Before you look at our API Endpoints."
+---
+
+## How to Use NPM to Integrate Our Project
+
+At this point, you have already:
+- Created a Merchant Account and have an auto-generated corresponding Funding Source ID
+- Received your API keys from creating your account on the Django Dashboard
+
+### The First Part of the integration: Getting the Components
+
+First and foremost, check out our npm package to download our Magic Payments SDK to easily use our product: https://www.npmjs.com/package/@magicpay/magicpay-js. 
+
+The most important conceptual thing to understand is that there are three parts to the consumer-facing integration:
+1. The React Component "Pay" Button, which will be the button that activate the "Magic Link"
+2. The "Magic Link", which is a link, when activated, will open our hosted page, where the customer will link their bank account and complete the transaction with Magic's backend logic and payment processor
+3. The Checkout ID and Link Token. These are both things that need to be generated at the time of checkout. The Link Token guarantees that the checkout is unique and that no fraudster can access your checkout at the same time. The Checkout ID verifies that your checkout is unique and is used to identify the customer's checkout.
+
+
+### Implementing the React Frontend Component
+As mentioned earlier, this is a simple React component that is compatible with any Javascript-based frontend. It's simply used as the point to activate the "Magic Link" product.
+
+`import "@magicpay/magicpay-js";
+
+function App() {
+  const handleButtonClick = () => {
+    console.log("Handle Button Click");
+  };
+  return (
+    <div>
+      <magic-btn onClick={handleButtonClick} />
+    </div>
+  );
+}
+
+export default App;`
+
+### Using the Magic Link Button
+
+When you're testing:
+1. To launch the Development Hosted page, add `isSandbox` at tag.
+2. To launch the Production Hosted page, omit `isSandbox` at tag.
+
+When sending a response after the conclusion of the Magic Hosted Page:
+To Send a Response after Operation in Onsuccess to hosted page, use `sendEventToChild` function with the argument response format of
+` response = {
+'type': 'SUCCESS_RESPONSE'
+'message': 'success message',
+},
+response = {
+'type': 'ERROR_RESPONSE',
+'message': 'error message,
+} `
