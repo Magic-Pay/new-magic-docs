@@ -1,6 +1,6 @@
 ---
 title: "Create Link Token"
-api: "GET https://api-dev.join-magic.com/api/consumers/checkout/{checkout_id}/create_link_token/"
+api: "GET http://127.0.0.1:8000/api/consumers/checkout/{checkout_id}/create_link_token/"
 description: "This endpoint Used for create link token."
 ---
 
@@ -26,7 +26,7 @@ description: "This endpoint Used for create link token."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api-dev.join-magic.com/api/consumers/checkout/{checkout_id}/create_link_token/' \
+curl --location --request POST 'http://127.0.0.1:8000/api/consumers/checkout/{checkout_id}/create_link_token/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --header 'link-token: <link-token>'

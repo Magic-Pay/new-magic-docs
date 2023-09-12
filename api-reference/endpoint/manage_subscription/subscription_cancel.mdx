@@ -1,6 +1,6 @@
 ---
 title: "Subscription Cancel"
-api: "POST https://api-dev.join-magic.com/api/merchants/manage_subscription/subscription_cancel/"
+api: "POST http://127.0.0.1:8000/api/merchants/manage_subscription/subscription_cancel/"
 description: "This endpoint Used for Cancel Subscription."
 ---
 
@@ -23,7 +23,7 @@ description: "This endpoint Used for Cancel Subscription."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api-dev.join-magic.com/api/merchants/manage_subscription/subscription_cancel/' \
+curl --location --request POST 'http://127.0.0.1:8000/api/merchants/manage_subscription/subscription_cancel/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: <Token>'
 ```

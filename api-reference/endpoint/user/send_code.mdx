@@ -1,6 +1,6 @@
 ---
 title: "Send Code"
-api: "POST https://api-dev.join-magic.com/api/verify_user/send_code"
+api: "POST http://127.0.0.1:8000/api/verify_user/send_code"
 description: "This endpoint Used for send verifiactio0n code to the user's phone."
 ---
 
@@ -20,7 +20,7 @@ description: "This endpoint Used for send verifiactio0n code to the user's phone
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api-dev.join-magic.com/api/verify_user/send_code' \
+curl --location --request POST 'http://127.0.0.1:8000/api/verify_user/send_code' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>'
 ```

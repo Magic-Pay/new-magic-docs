@@ -1,4 +1,50 @@
 ---
 title: "Magic Pay"
-sidebarTitle: "Magic Pay API"
-description: " "
+sidebarTitle: "Magic Pay Backend Workflow"
+description: ""
+---
+
+## Create Merchant
+Merchant will create from django admin panel.
+press register on dwolla button on merchant object for create merchant on dwolla
+and generate api keys using generate api key button
+
+## Add subscription 
+add is_subscription is true in the checkout object for subscibe th consumer user.
+
+## Checkout object
+checkout object will create using merchants/checkout POST api. 
+if checkout will sucessfully created it will return status code 200 or 201,
+and in the return Response you will get checkout object id.
+
+## Authenticate consumer user
+send_code api is use for validate and send verification code to the user's phone number.
+verify_code api is use for verify the verification code and it will return 200 response and auth token.
+
+## Generate link token
+after Authenticate the user generate link token using generate_link_token api, 
+this api is use for register merchant user on dwolla,
+and store the token you'll get in the success response. 
+
+## Create link token 
+you can create link token using create_link_token api, this api is use for register consumer user on dwolla.
+
+## Link payment method
+after get the register consumer on dwolla, you have to link the payment method with your checkout object,
+exchange_public_token api is use for link the payment method with cehckout object.
+
+## Initiate transaction
+for Initiate transaction you can use get_processor_token api, this api it self have 3 internal parts,
+1. Get processor token from Plaid for Dwolla
+2. Add funding source on Dwolla for Customer Bank account
+3. Initiate A2A transfer and store Transfer information in Checkout object
+
+
+## Refund request
+consumer user can create refund request using consumer_refund_request api,
+
+## Merchant responseon refund request  
+merchant will approve or reject the refund request using merchant_status_refund_requ
+
+## Initiate Refund 
+after merchant approve the refund request you can transfer the funds from merchant's account to the condumer's account using initiate_refund_transfer api.

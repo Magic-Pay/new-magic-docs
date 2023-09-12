@@ -1,6 +1,6 @@
 ---
 title: "Create Checkout Object"
-api: "POST https://api-dev.join-magic.com/api/merchants/checkout"
+api: "POST http://127.0.0.1:8000/api/merchants/checkout"
 description: "This endpoint used for create checkout object"
 ---
 
@@ -11,7 +11,7 @@ description: "This endpoint used for create checkout object"
 
 ### Body
 
-<ParamField body="data" type="string">
+<ParamField body="chekout_object" type="string">
   this is the body of Checkout Object
 </ParamField>
 
@@ -25,7 +25,7 @@ description: "This endpoint used for create checkout object"
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api-dev.join-magic.com/api/merchants/checkout' \
+curl --location --request POST 'http://127.0.0.1:8000/api/merchants/checkout' \
 --header 'Content-Type: application/json' \
 --header 'api-key: <api-key>' \
 ```
