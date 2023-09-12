@@ -28,7 +28,14 @@
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
-
+    {
+      "group": "Magic Integration",
+      "pages": [
+        "api-reference/integration/overview",
+        "api-reference/integration/direct-api",
+        "api-reference/integration/sdk"
+      ]
+    },
     {
       "group": "Checkout API",
       "pages": [
@@ -58,6 +65,12 @@
         "api-reference/endpoint/refund_request/consumer_refund_list",
         "api-reference/endpoint/refund_request/merchant_status_refund_request",
         "api-reference/endpoint/refund_request/initiate_refund_transfer"
+      ]
+    },
+    {
+      "group": "Payment API",
+      "pages": [
+        "api-reference/endpoint/payment_preprocess/get_processor_token"
       ]
     },
     {

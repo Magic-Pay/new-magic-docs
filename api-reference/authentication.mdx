@@ -5,15 +5,24 @@ description: "How to connect to Magic's services. Before you look at our API End
 
 ## Credentials at a high-level
 
-Magic assigns each merchant unique Public and Private API keys.
+Magic assigns each merchant unique API key.
 
-### Client-Side API Authentication
-Providing your Public API key identifies your merchant account to Catch so that your account configuration is applied when Catch responds to your request.
+### Note:
 
-### Server-Side API Authentication
-All server-side requests must provide valid authentication credentials in their request headers. Server-side API requests require both a valid Public API key and a corresponding Private API key.
+API key values are highly sensitive. They should be stored securely within your systems and otherwise not shared or made accessible to any person or system.
+
+### API Authentication
+
+All server-side requests must provide valid authentication credentials in their request headers. Server-side API requests require an API key.
 
 Magic's e-commerce platform partners must securely access this data and exclusively use each merchant’s particular keys when performing requests on their behalf.
+
+The keys should be handed in as headers to the request:
+
+| Header Name | Value |
+| ---- | ---- |
+| `api-key` | api_key_value |
+
 
 ## Putting it Together: An Integration
 
@@ -32,3 +41,13 @@ Consumer
 - Consumers need two things to effectively use Magic: an authentication token when registering for Magic (made through Plaid), as well as a checkout ID that is unique to whichever unique time they're purchasing a product at the merchant's store.
 - Generally, an authentication token is made whenever a consumer creates an account with Magic using their phone number.
 - A merchant will have to auto-generate a checkout ID for each consumer when they checkout with the Magic product. This is tied into the backend and will be featured again later.
+
+## Base Urls
+
+### Sandbox Base URL
+
+[https://api-dev.join-magic.com/api/](https://api-dev.join-magic.com/api/)
+
+### Live Production Base URL
+
+[https://api.join-magic.com/api/](https://api.join-magic.com/api/)
