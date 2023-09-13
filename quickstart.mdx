@@ -1,80 +1,103 @@
+
 ---
 title: 'Get Started with Magic'
 description: 'Integration Overview: Start accepting payments in under a day with Magic Payments.'
 ---
 
-Below is a high-level view of all the sequential steps to get started with Magic. Feel free to dive into the "Essentials" tab for a deeper understanding of how to complete the integration step-by-step.
+# Integration Overview
 
-The integration will require 1) Magic's integration team to create a merchant account given credentials you provide them and 2) individual installations that will require some lightweight coding merchant's side (you!).
+Welcome to Magic Payments integration, where you can seamlessly accept payments in a hassle-free manner. This integration process involves several key components, making it a comprehensive solution for your payment needs. Below, we'll provide an overview of the integration journey, starting from creating a merchant account to initiating transactions and handling refunds.
 
-### Integration components overview
+## Integration Components Overview
 
-Catch integrations typically consist of the following elements:
+Magic Payments integrations typically consist of the following key elements:
 
-1. Creating a Merchant Account with Magic
-2. Implementing Magic as a payment method at checkout. (React Component, Hosted Page, Checkout ID, Link Token)
-3. Adding any Magic Marketing Components as needed
-4. (Future) Incorporating Magic's accounting reports into your financial operations.
+1. **Creating a Merchant Account with Magic**
+2. **Implementing Magic as a Payment Method at Checkout** (Options: React Component, Hosted Page, Checkout ID, Link Token)
+3. **Adding Magic Marketing Components** (as needed)
+4. *(Future)* **Incorporating Magic's Accounting Reports** into your financial operations.
 
-# Steps for Integration
+## Steps for Integration
 
-## Create Merchant
-Create a merchant from the Django admin panel.
-Register merchant on Dwolla using "Register on Dwolla" button from merhcant object.
-and generate api keys using generate api key button, this api key will use in many api call, so store the keys after created.
+### Create Merchant Account
 
-## Integrate Frontend
+Begin by creating a merchant account from the Django admin panel. This step is crucial for initiating the integration process. During this process:
 
-## Creating a Checkout ID
-checkout object will create using merchants/checkout POST api. 
-if checkout will sucessfully created it will return status code 200 or 201,
-and in the return Response you will get checkout object id.
-add is_subscription is true in the checkout object for subscibe the consumer user.
+- Register the merchant on Dwolla by utilizing the "Register on Dwolla" button within the merchant object.
+- Generate API keys that will be used in various API calls. Ensure you securely store these keys for future use.
 
-## Authenticate consumer user
-send_code api is use for validate and send verification code to the user's phone number.
-verify_code api is use for verify the verification code and it will return 200 response and auth token.
+### Integrate Frontend
 
-## Generate link token
-after Authenticate the user generate link token using generate_link_token api, 
-this api is use for register merchant user on dwolla,
-and store the token you'll get in the success response. 
+Now, let's delve into the frontend integration to enhance the user experience.
 
-# Our API Endpoints
+#### Creating a Checkout ID
 
-### Creating a Checkout ID
-checkout object will create using merchants/checkout POST api. 
-if checkout will sucessfully created it will return status code 200 or 201,
-and in the return Response you will get checkout object id.
-add is_subscription is true in the checkout object for subscibe the consumer user.
+- Create a checkout object using the "merchants/checkout" POST API.
+- A successful creation will result in a status code of 200 or 201.
+- In the API response, you will receive a checkout object ID, which plays a pivotal role in tracking specific checkout transactions.
+- Don't forget to set "is_subscription" to true in the checkout object to enable consumer user subscriptions.
 
-### Authenticate consumer user
-send_code api is use for validate and send verification code to the user's phone number.
-verify_code api is use for verify the verification code and it will return 200 response and auth token.
+#### Authenticate Consumer Users
 
-### Generate link token
-after Authenticate the user generate link token using generate_link_token api, 
-this api is use for register merchant user on dwolla,
-and store the token you'll get in the success response. 
+To ensure user authenticity, employ the following APIs:
 
-### Create Link Token 
-you can create link token using create_link_token api, this api is use for register consumer user on dwolla.
+- **send_code API:** Validate and send a verification code to the user's phone number.
+- **verify_code API:** Verify the received verification code, resulting in a 200 response and an authentication token.
 
-## Link payment method
-after get the register consumer on dwolla, you have to link the payment method with your checkout object,
-exchange_public_token api is use for link the payment method with cehckout object.
+#### Generate Link Token
 
-### Initiate transaction
-for Initiate transaction you can use get_processor_token api, this api it self have 3 internal parts,
-1. Get processor token from Plaid for Dwolla
-2. Add funding source on Dwolla for Customer Bank account
-3. Initiate A2A transfer and store Transfer information in Checkout object
+After authenticating the user, use the "generate_link_token" API to:
 
-### Refund request
-consumer user can create refund request using consumer_refund_request api
+- Register the merchant user on Dwolla.
+- Store the token obtained in the success response for future reference.
 
-## Merchant responseon refund request  
-merchant will approve or reject the refund request using merchant_status_refund_request
+### Our API Endpoints
 
-### Initiate Refund 
-after merchant approve the refund request you can transfer the funds from merchant's account to the condumer's account using initiate_refund_transfer API.
+Here's a summary of the essential API endpoints in this integration:
+
+#### Creating a Checkout ID
+
+- Create a checkout object using the "merchants/checkout" POST API.
+- Successful creation results in a status code of 200 or 201.
+- Receive a checkout object ID in the response.
+- Set "is_subscription" to true for consumer user subscriptions.
+
+#### Authenticate Consumer Users
+
+- Use the "send_code" API to validate and send verification codes to user phone numbers.
+- Employ the "verify_code" API to verify the received codes and obtain an authentication token.
+
+#### Generate Link Token
+
+- Use the "generate_link_token" API to register merchant users on Dwolla.
+- Store the obtained token for future use.
+
+### Create Link Token
+
+To register consumer users on Dwolla, you can create a link token using the "create_link_token" API.
+
+## Link Payment Method
+
+Once consumer users are registered on Dwolla, it's time to link their payment methods to your checkout object. Utilize the "exchange_public_token" API for this purpose.
+
+### Initiate Transaction
+
+For initiating transactions, utilize the "get_processor_token" API, which consists of three internal parts:
+
+1. **Get Processor Token from Plaid for Dwolla**
+2. **Add Funding Source on Dwolla for Customer Bank Account**
+3. **Initiate A2A Transfer and Store Transfer Information in Checkout Object**
+
+### Refund Request
+
+Consumer users have the ability to create refund requests using the "consumer_refund_request" API.
+
+## Merchant Response on Refund Request
+
+Merchants play a pivotal role in the refund process by approving or rejecting refund requests through the "merchant_status_refund_request" API.
+
+### Initiate Refund
+
+After merchant approval of a refund request, you can efficiently transfer funds from the merchant's account to the consumer's account using the "initiate_refund_transfer" API.
+
+This comprehensive integration process ensures a smooth payment experience, covering everything from user authentication to refunds. Please refer to our detailed documentation for step-by-step instructions on each component.
