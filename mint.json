@@ -30,7 +30,7 @@
     },
     {
       "group": "Essentials",
-      "pages": ["essentials/markdown", "api-reference/authentication", "api-reference/npm"]
+      "pages": ["essentials/markdown", "essentials/authentication", "essentials/npm"]
     },
     {
       "group": "Magic Integration",
