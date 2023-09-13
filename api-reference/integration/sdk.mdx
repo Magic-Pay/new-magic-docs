@@ -3,11 +3,11 @@ title: "SDK Integration"
 description: "Magic Provides Magic SDK which can be integrated with any __javascript framework__."
 ---
 
-Basically, this Magic SDK is a [NPM package](https://www.npmjs.com/package/@magicpay/magicpay-js),which merchants need to install on their frontend store.
+### The Magic NPM SDK is our easiest and most lightweight way to integrate the Magic product. It's instantly compatible with any Javascript-framework-based store. Look above for how to integrate with our package!
 
-And on one of the appropriate components of frontend they will need to import this magicpay package.
+The Magic SDK is a [NPM package](https://www.npmjs.com/package/@magicpay/magicpay-js). Merchants will install this package and it'll make it super easy for them to integrate our product!
 
-This __Magic Pay SDK__ provide three component:
+This __Magic Pay SDK__ provide three components:
 * [Magic Link button](#magic-link-button)(which will open hosted page)
 * [Marketing Component](#marketing-component)(Magic Info)
 * [Magic Button](#magic-button)(to handle any custom operation)
@@ -15,9 +15,9 @@ This __Magic Pay SDK__ provide three component:
 
 ### Magic Link button
 
-By importing this component it will add a button on Merchant’s store and on click of that button it will open the hosted page.
+This component when clicked (on a merchant's store by a consumer) will open a "Hosted Page", which will essentially be where the consumer carries out the rest of their checkout process.
 
-To use this feature, merchants need to pass a checkout id and link token for a particular checkout object and also need to pass an Onsuccess and Onerror function in which it will handle operation as given in the __Readme.md__ file of that package.
+To use this feature, merchants need to pass a `Checkout ID` and `Link Token` for a particular checkout object and also need to pass an `Onsuccess` and `Onerror` function in which it will handle operation as given in the __Readme.md__ file of that package.
 
 **Parameters**
 
@@ -41,7 +41,7 @@ Merchants can import it on the appropriate component and call the magic-info ele
 
 ### Magic Button
 
-Magic provides one magic button, for any custom operations and activity to do on the merchant’s store.
+Magic provides a magic button that merchants can use as a "pay now" or a checkout button, similar to Affirm, Paypal, and other comparable alternative checkout buttons.
 
 Merchants can import it on the appropriate component and call the magic-info element as given in the __Readme.md__ file of the package.
 
