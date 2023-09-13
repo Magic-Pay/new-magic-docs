@@ -1,25 +1,35 @@
 ---
 title: 'Get Started with Magic'
-description: 'Start accepting payments in under a day with Magic Payments.'
+description: 'Integration Overview: Start accepting payments in under a day with Magic Payments.'
 ---
 
 Below is a high-level view of all the sequential steps to get started with Magic. Feel free to dive into the "Essentials" tab for a deeper understanding of how to complete the integration step-by-step.
 
-The integration will require 1) Magic's integration team to create a merchant account given credentials you provide them and 2) individual installations that will require some lightweight coding merchant's side (you!). 
+The integration will require 1) Magic's integration team to create a merchant account given credentials you provide them and 2) individual installations that will require some lightweight coding merchant's side (you!).
+
+### Integration components overview
+
+Catch integrations typically consist of the following elements:
+
+1. Creating a Merchant Account with Magic
+2. Implementing Magic as a payment method at checkout. (React Component, Hosted Page, Checkout ID, Link Token)
+3. Adding any Magic Marketing Components as needed
+4. (Future) Incorporating Magic's accounting reports into your financial operations.
+
+# Steps for Integration
 
 ## Create Merchant
 Create a merchant from the Django admin panel.
 Register merchant on Dwolla using "Register on Dwolla" button from merhcant object.
 and generate api keys using generate api key button, this api key will use in many api call, so store the keys after created.
 
+## Integrate Frontend
 
-## Checkout object
+## Creating a Checkout ID
 checkout object will create using merchants/checkout POST api. 
 if checkout will sucessfully created it will return status code 200 or 201,
 and in the return Response you will get checkout object id.
-
-## Add subscription 
-add is_subscription is true in the checkout object for subscibe th consumer user.
+add is_subscription is true in the checkout object for subscibe the consumer user.
 
 ## Authenticate consumer user
 send_code api is use for validate and send verification code to the user's phone number.
@@ -30,25 +40,41 @@ after Authenticate the user generate link token using generate_link_token api,
 this api is use for register merchant user on dwolla,
 and store the token you'll get in the success response. 
 
-## Create link token 
+# Our API Endpoints
+
+### Creating a Checkout ID
+checkout object will create using merchants/checkout POST api. 
+if checkout will sucessfully created it will return status code 200 or 201,
+and in the return Response you will get checkout object id.
+add is_subscription is true in the checkout object for subscibe the consumer user.
+
+### Authenticate consumer user
+send_code api is use for validate and send verification code to the user's phone number.
+verify_code api is use for verify the verification code and it will return 200 response and auth token.
+
+### Generate link token
+after Authenticate the user generate link token using generate_link_token api, 
+this api is use for register merchant user on dwolla,
+and store the token you'll get in the success response. 
+
+### Create Link Token 
 you can create link token using create_link_token api, this api is use for register consumer user on dwolla.
 
 ## Link payment method
 after get the register consumer on dwolla, you have to link the payment method with your checkout object,
 exchange_public_token api is use for link the payment method with cehckout object.
 
-## Initiate transaction
+### Initiate transaction
 for Initiate transaction you can use get_processor_token api, this api it self have 3 internal parts,
 1. Get processor token from Plaid for Dwolla
 2. Add funding source on Dwolla for Customer Bank account
 3. Initiate A2A transfer and store Transfer information in Checkout object
 
-
-## Refund request
+### Refund request
 consumer user can create refund request using consumer_refund_request api
 
 ## Merchant responseon refund request  
 merchant will approve or reject the refund request using merchant_status_refund_request
 
-## Initiate Refund 
-after merchant approve the refund request you can transfer the funds from merchant's account to the condumer's account using initiate_refund_transfer api.
+### Initiate Refund 
+after merchant approve the refund request you can transfer the funds from merchant's account to the condumer's account using initiate_refund_transfer API.
