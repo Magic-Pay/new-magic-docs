@@ -22,8 +22,16 @@
       "name": "API Reference",
       "url": "api-reference"
     }
-  ],
+  ],  
   "navigation": [
+    {
+      "group": "Get Started",
+      "pages": ["introduction", "quickstart"]
+    },
+    {
+      "group": "Essentials",
+      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+    },
     {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
@@ -56,6 +64,12 @@
       "pages": [
         "api-reference/endpoint/manage_subscription/get_subscription_details",
         "api-reference/endpoint/manage_subscription/subscription_cancel"
+      ]
+    },
+    {
+      "group":"Get Processor Token",
+      "pages":[
+        "api-reference/endpoint/payment_preprocess/get_processor_token"
       ]
     },
     {

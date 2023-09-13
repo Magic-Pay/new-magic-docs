@@ -1,6 +1,6 @@
 ---
 title: "Initiate Refund Transfer"
-api: "POST https://api-dev.join-magic.com/api/merchants/refund_request/initiate_refund_transfer/"
+api: "POST http://127.0.0.1:8000/api/merchants/refund_request/initiate_refund_transfer/"
 description: "This endpoint Used for initiate refund transfer."
 ---
 
@@ -24,7 +24,7 @@ description: "This endpoint Used for initiate refund transfer."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'https://api-dev.join-magic.com/api/merchants/refund_request/initiate_refund_transfer/' \
+curl --location --request POST 'http://127.0.0.1:8000/api/merchants/refund_request/initiate_refund_transfer/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --body-data 'id:<refund_record_id>, status:approved'
