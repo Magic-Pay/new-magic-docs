@@ -1,5 +1,5 @@
 ---
-title: "Integrating with our NPM Package"
+title: "Installing our NPM Package"
 description: "A Hands-on Guide to Integrating our Frontend Components."
 ---
 
@@ -23,7 +23,7 @@ The most important conceptual thing to understand is that there are three parts 
 As mentioned earlier, this is a simple React component that is compatible with any Javascript-based frontend. It's simply used as the point to activate the "Magic Link" product.
 
 Below is a snippet of the code for the button. For the `handleButtonClick`, the user will activate the "Magic Link" to access the Hosted Page.
-```
+```javascript ReactComponent.js
 import "@magicpay/magicpay-js";
 
 function App() {
@@ -63,7 +63,7 @@ response = {
 
 For users curious to learn more about Magic, we have a simple Javascript component next to the "Pay" Button Component that users can click to learn more about Magic.
 
-```
+```javascript InfoComponent.js
 import "@magicpay/magicpay-js";
 
 function App() {
@@ -76,3 +76,7 @@ function App() {
 
 export default App;
 ```
+
+### Home Stretch: Integrating Checkout ID & Link Token
+
+Every time a consumer checks out with Magic, we generate two things: a Checkout ID and Link Token.
