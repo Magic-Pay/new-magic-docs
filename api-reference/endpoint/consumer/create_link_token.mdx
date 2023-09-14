@@ -6,21 +6,21 @@ description: "This endpoint Used for create link token."
 
 ### header
 <ParamField path="checkout_id" type="string">
-  checkout object id.
+  Checkout Id Object.
 </ParamField>
 
 <ParamField header="Authorization" type="string">
-  consumer user token.
+  Enter the Consumer User Token.
 </ParamField>
 
 <ParamField header="link-token" type="string">
-  merchant user token, you'll get this token in the response of generate_link_token api.
+  The Merchant User Token is received as the response to the API call `generate_link_token`. 
 </ParamField>
 
 ### Response
 
 <ResponseField name="success" type="number">
-  This will return 200 on success.
+  This Response field will return 200 on success.
 </ResponseField>
 
 <RequestExample>
