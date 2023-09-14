@@ -1,21 +1,21 @@
 ---
-title: "SDK Integration"
-description: "Magic Provides Magic SDK which can be integrated with any __javascript framework__."
+title: "NPM SDK Integration"
+description: "Magic Provides an NPM SDK which can be integrated with any __javascript framework__."
 ---
 
-### The Magic NPM SDK is our easiest and most lightweight way to integrate the Magic product. It's instantly compatible with any Javascript-framework-based store. Look above for how to integrate with our package!
+### The Magic NPM SDK is our easiest and most lightweight way to integrate the Magic product. It's instantly compatible with any Javascript-framework-based store. Look [above](https://magic-21.mintlify.app/essentials/npm) for how to integrate with our package!
 
-The Magic SDK is a [NPM package](https://www.npmjs.com/package/@magicpay/magicpay-js). Merchants will install this package and it'll make it super easy for them to integrate our product!
+The Magic SDK is an [NPM Package](https://www.npmjs.com/package/@magicpay/magicpay-js).
 
-This __Magic Pay SDK__ provide three components:
-* [Magic Link button](#magic-link-button)(which will open hosted page)
-* [Marketing Component](#marketing-component)(Magic Info)
-* [Magic Button](#magic-button)(to handle any custom operation)
+This __Magic Pay SDK__ has three components:
+* [Magic Link button](#magic-link-button)(which will open our Hosted Page)
+* [Marketing Component](#marketing-component)(Informational Screen)
+* [Magic Button](#magic-button)(Consumer-facing "Pay" Button)
 
 
-### Magic Link button
+### Magic Link Button
 
-This component when clicked (on a merchant's store by a consumer) will open a "Hosted Page", which will essentially be where the consumer carries out the rest of their checkout process.
+This component, when clicked (on a merchant's store by a consumer), will open a "Hosted Page", which will essentially be where the consumer carries out the rest of their checkout process.
 
 To use this feature, merchants need to pass a `Checkout ID` and `Link Token` for a particular checkout object and also need to pass an `Onsuccess` and `Onerror` function in which it will handle operation as given in the __Readme.md__ file of that package.
 
@@ -34,14 +34,14 @@ ___isSandbox___  : <blockquote> Add this parameter if Merchant needs to use Magi
 
 ### Marketing Component
 
-Magic provides a marketing component to promote Magic payment on their store.
+Magic provides a marketing component to promote Magic's payment option in their store and inform the consumer about our security and trustworthiness.
 
 Merchants can import it on the appropriate component and call the magic-info element as given in the __Readme.md__ file of the package.
 
 
 ### Magic Button
 
-Magic provides a magic button that merchants can use as a "pay now" or a checkout button, similar to Affirm, Paypal, and other comparable alternative checkout buttons.
+Magic provides a `Magic Button` that merchants can use as a "pay now" or a checkout button, similar to Affirm, Paypal, and other comparable alternative checkout buttons.
 
 Merchants can import it on the appropriate component and call the magic-info element as given in the __Readme.md__ file of the package.
 
