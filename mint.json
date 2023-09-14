@@ -30,7 +30,7 @@
     },
     {
       "group": "Get Started",
-      "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/npm", "essentials/tech_overview", "essentials/authentication"]
+      "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/npm", "essentials/tech_overview"]
     },
     {
       "group": "Integration Options",
@@ -38,6 +38,10 @@
         "essentials/integration/direct-api",
         "essentials/integration/sdk"
       ]
+    },
+    {
+      "group": "Learn More About Magic",
+      "pages": ["learning/authentication"]
     },
     {
       "group": "Checkout API",
