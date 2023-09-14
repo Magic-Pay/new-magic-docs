@@ -30,7 +30,7 @@
     },
     {
       "group": "Essentials",
-      "pages": ["essentials/merchant", "essentials/npm", "essentials/authentication"]
+      "pages": ["essentials/merchant", "essentials/npm", "essentials/integration_overview", "essentials/authentication"]
     },
     {
       "group": "Integration Options",
