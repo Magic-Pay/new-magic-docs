@@ -1,0 +1,76 @@
+---
+title: 'Technology Overview'
+description: 'Overview of our Endpoints and Capabilities We Offer'
+---
+
+#### Creating a Checkout ID
+
+- Create a checkout object using the "merchants/checkout" POST API.
+- A successful creation will result in a status code of 200 or 201.
+- In the API response, you will receive a checkout object ID, which plays a pivotal role in tracking specific checkout transactions.
+- Don't forget to set "is_subscription" to true in the checkout object to enable consumer user subscriptions.
+
+#### Authenticate Consumer Users
+
+To ensure user authenticity, employ the following APIs:
+
+- **send_code API:** Validate and send a verification code to the user's phone number.
+- **verify_code API:** Verify the received verification code, resulting in a 200 response and an authentication token.
+
+#### Generate Link Token
+
+After authenticating the user, use the "generate_link_token" API to:
+
+- Register the merchant user on Dwolla.
+- Store the token obtained in the success response for future reference.
+
+### Our API Endpoints
+
+Here's a summary of the essential API endpoints in this integration:
+
+#### Creating a Checkout ID
+
+- Create a checkout object using the "merchants/checkout" POST API.
+- Successful creation results in a status code of 200 or 201.
+- Receive a checkout object ID in the response.
+- Set "is_subscription" to true for consumer user subscriptions.
+
+#### Authenticate Consumer Users
+
+- Use the "send_code" API to validate and send verification codes to user phone numbers.
+- Employ the "verify_code" API to verify the received codes and obtain an authentication token.
+
+#### Generate Link Token
+
+- Use the "generate_link_token" API to register merchant users on Dwolla.
+- Store the obtained token for future use.
+
+### Create Link Token
+
+To register consumer users on Dwolla, you can create a link token using the "create_link_token" API.
+
+## Link Payment Method
+
+Once consumer users are registered on Dwolla, it's time to link their payment methods to your checkout object. Utilize the "exchange_public_token" API for this purpose.
+
+### Initiate Transaction
+
+For initiating transactions, utilize the "get_processor_token" API, which consists of three internal parts:
+
+1. **Get Processor Token from Plaid for Dwolla**
+2. **Add Funding Source on Dwolla for Customer Bank Account**
+3. **Initiate A2A Transfer and Store Transfer Information in Checkout Object**
+
+### Refund Request
+
+Consumer users have the ability to create refund requests using the "consumer_refund_request" API.
+
+## Merchant Response on Refund Request
+
+Merchants play a pivotal role in the refund process by approving or rejecting refund requests through the "merchant_status_refund_request" API.
+
+### Initiate Refund
+
+After merchant approval of a refund request, you can efficiently transfer funds from the merchant's account to the consumer's account using the "initiate_refund_transfer" API.
+
+This comprehensive integration process ensures a smooth payment experience, covering everything from user authentication to refunds. Please refer to our detailed documentation for step-by-step instructions on each component.
