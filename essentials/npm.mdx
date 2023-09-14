@@ -1,9 +1,9 @@
 ---
 title: "Installing our NPM Package"
-description: "Second Part off an Integration: Integrating our Frontend Components."
+description: "Second Part of an Integration: Integrating our Frontend Components."
 ---
 
-## How to Use NPM to Integrate Our Project
+## Integrating with our NPM Package
 
 At this point, you have already:
 - Created a Merchant Account and have an auto-generated corresponding Funding Source ID
@@ -11,13 +11,17 @@ At this point, you have already:
 
 ### First, Getting the Components
 
-First and foremost, check out our npm package to download our Magic Payments SDK to easily use our product: https://www.npmjs.com/package/@magicpay/magicpay-js. 
+First and foremost, check out our npm package to download our Magic Payments SDK to easily use our product: https://www.npmjs.com/package/@magicpay/magicpay-js. Our NPM package is the easiest way to get up and running with Magic!
 
-The most important conceptual thing to understand is that there are three parts to the consumer-facing integration:
-1. The React "Pay" Button Component, which will be the button that activate the "Magic Link"
+There are three parts to installing the NPM package and integrating the frontend components:
+1. The React "Pay" Button Component, which will be the button that activates the "Magic Link"
 2. The "Magic Link", which is a link, when activated, will open our hosted page, where the customer will link their bank account and complete the transaction with Magic's backend logic and payment processor
 3. The Checkout ID and Link Token. These are both things that need to be generated at the time of checkout. The Link Token guarantees that the checkout is unique and that no fraudster can access your checkout at the same time. The Checkout ID verifies that your checkout is unique and is used to identify the customer's checkout.
 
+The first command to run is to install our NPM package:
+```
+npm i @magicpay/magicpay-js
+```
 
 ### Part 1: Implementing the React "Pay" Button Component 
 As mentioned earlier, this is a simple React component that is compatible with any Javascript-based frontend. It's simply used as the point to activate the "Magic Link" product.
@@ -42,7 +46,7 @@ export default App;
 
 ### Part 2: Using the Magic Link Button
 
-To use the Magic Link Feature, merchants need to pass a `Checkout ID` and `Link Token` for a particular checkout object and also need to pass an `Onsuccess` and `Onerror` function in which it will handle operation as given in the __Readme.md__ file of that package. Every time a consumer checks out with Magic, we will also generate two things: a Checkout ID and Link Token. The Checkout ID allows us to track the checkout, and the Link Token protects the merchant from consumer fraud.
+To use the Magic Link Feature, merchants need to pass a `Checkout ID` and `Link Token` for a particular checkout object and also need to pass an `Onsuccess` and `Onerror` function in which it will handle operation as given in the __Readme.md__ file of that package.
 
 **Parameters**
 
@@ -95,7 +99,7 @@ export default App;
 
 ### Part 3: Magic Marketing Component
 
-For users curious to learn more about Magic, we have a simple Javascript component next to the "Pay" Button Component that users can click to learn more about Magic.
+For consumers curious to learn more about Magic, we have a simple Javascript component next to the "Pay" Button Component that users can click to learn more about Magic.
 
 ```javascript InfoComponent.js
 import "@magicpay/magicpay-js";
