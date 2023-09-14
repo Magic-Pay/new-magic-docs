@@ -3,44 +3,37 @@ title: "Direct API Integration"
 description: "Magic Offers Direct API integration with SDK integration."
 ---
 
+A Direct API Integration with Magic is one of the options we provide. First, merchants will need an __Api key__, provided after we create their merchant account.
 
-First merchant will need an __Api key__ that is provided when the merchant will get after __subscription__ with magic.
+### 1. Create Checkout on Magic and get `Checkout ID`
 
+- Once a consumer checks out and selects to __Pay with Magic__, the Merchant will need to get the `Checkout ID` from Magic.
+- To create the `Checkout ID`, the Merchant will call [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) from the  Merchant’s store. 
+- The Merchant will have to create a call on their backend to our endpoint, which will generate the `Checkout ID`.
+- At that point, the merchant will then pipe the data to the checkout object to be called by the `Magic Link Button` feature.
+- The Merchant will pass the request parameters as given in [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) and need to get and store a `Checkout ID`.
 
-### 1. Create Checkout on Magic and get Checkout id
+### 2. Retrieve the `Link Token` and then Finish Integrating with Magic!
 
-Once a consumer checks out with order and selects to __Pay with Magic__, Merchant will need to get checkout Id from Magic, and for that Merchant need to call [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) from Merchant’s store.
-
-In this step, Merchant will need to pass request parameters as given in [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) and need to get and store a checkout id.
-
-
-### 2. Get link token to to process with Magic SDK
-
-Once a merchant gets the checkout id from Magic, then Merchant needs to get a Link token for that checkout object.
-And for that Merchant needs to call [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) from Merchant’s store.
-
-In this step, merchants will need to pass the obtained checkout id as given in [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) and need to get and store a link token.
+- Once a merchant gets the `Checkout ID` from Magic, Magic will work with the Merchant to retrieve the `Link Token`.
+- To retrieve the `Link Token`, the Merchant will hit one of our API endpoints: [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) from Merchant’s store.
+- To populate the `Link Token`, we'll need the `Checkout ID` as generated in the last step, through this API call: [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token).
 
 
-### 3. Pass Checkout id and Link token to Magic SDK
+### 3. Voila! With both the `Checkout ID` and `Link Token`, Integrate the Rest of the Magic SDK
 
-Now to open the __hosted page of Magic__, On merchant’s Frontend, Merchant needs to integrate Magic SDK, Follow [SDK integration](/api-reference/integration/sdk) steps for that.
- 
-And for this step, merchants need to pass that stored link token and checkout id to SDK as given in [SDK Integration](/api-reference/integration/sdk) and it will launch the Magic screen where it will process to authenticate consumers and allows consumers to interact with banks for payments.
+- Find the [SDK integration](/api-reference/integration/sdk) for more information.
+- With both values, we can now use the `Magic Link` Button, where consumers can now easily pay with Magic. where it will process to authenticate consumers and allow consumers to interact with banks for payments.
 
+### 4. Process your Very First Payment!
 
-### 4. Process Payment
-
-On the Hosted page, once the consumer clicks on the __Pay Now__ button, it will send the Success event to the Merchant store, where it will call the Success function that is initialized as given in [SDK integration](/api-reference/integration/sdk).
-
-On that Function Merchant will need to call the [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic from Merchant’s store.
-
-And according to success and error response, merchants will need to call functions with formatted responses as given in [SDK integration](/api-reference/integration/sdk).
+- On the Hosted Page, once the consumer clicks on the __Pay Now__ button in the last step of our flow, we'll trigger a payment.
+- To process a payment, the Merchant can simply call the [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic from the Merchant’s store.
 
 
 ### 5. Success And Error Page
 
-Based on payment response, Consumer will be redirected to Success/Error page on hosted page and After sometime it will close hosted page and will be redirected to Merchant’s store.
+Based on a successful or error payment response, the consumer will be redirected to the last URL before clicking the original Magic payment button.
 
 
 
