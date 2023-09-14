@@ -30,7 +30,7 @@
     },
     {
       "group": "Get Started",
-      "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/npm", "essentials/tech_overview"]
+      "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/npm"]
     },
     {
       "group": "Integration Options",
@@ -41,7 +41,7 @@
     },
     {
       "group": "Learn More About Magic",
-      "pages": ["learning/authentication"]
+      "pages": ["learning/authentication", "learning/tech_overview"]
     },
     {
       "group": "Checkout API",
