@@ -6,30 +6,30 @@ description: "This endpoint Used for initiate refund trnasfer."
 
 ### header
 <ParamField path="checkout_id" type="string">
-  checkout object id.
+  Checkout ID Object
 </ParamField>
 
 <ParamField header="Authorization" type="string">
-  consumer user token.
+  Enter the Consumer User Token
 </ParamField>
 
 <ParamField header="link-token" type="string">
-  merchant user token, you'll get this token in the response of generate_link_token api.
+  The Merchant User Token is received as a response to an `generate_link_token` API call.
 </ParamField>
 
 ### body
 <ParamField body="public_token" type="string">
-  this is plaid public token.
+  This is the Plaid's Public Token.
 </ParamField>
 
 <ParamField body="plaid_account_id" type="string">
-  this is plaid plaid account id.
+  This is the Plaid's Account Id.
 </ParamField>
 
 ### Response
 
 <ResponseField name="success" type="number">
-  This will return 200 on success.
+  This Response field will return 200 on success.
 </ResponseField>
 
 <RequestExample>
