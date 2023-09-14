@@ -6,22 +6,22 @@ description: "This endpoint Used for approve refund request by merchant."
 
 ### header
 <ParamField header="Authorization" type="string">
-  consumer user token.
+  This is the Consumer User Token.
 </ParamField>
 
 ### body
 <ParamField body="id" type="string">
-  this is refund id.
+  This is the Refund ID.
 </ParamField>
 
 <ParamField body="status" type="string">
-  merchant response on the refund request.
+  The Merchant Response to the Refund Request
 </ParamField>
 
 ### Response
 
 <ResponseField name="success" type="number">
-  This will return 200 on success.
+  This Response field will return 200 on success.
 </ResponseField>
 
 <RequestExample>
