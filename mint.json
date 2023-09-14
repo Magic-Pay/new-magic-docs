@@ -25,11 +25,11 @@
   ],  
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Introduction",
       "pages": ["introduction", "quickstart"]
     },
     {
-      "group": "Essentials",
+      "group": "Get Started",
       "pages": ["essentials/merchant", "essentials/npm", "essentials/integration_overview", "essentials/authentication"]
     },
     {
