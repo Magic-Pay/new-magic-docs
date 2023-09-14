@@ -35,8 +35,8 @@
     {
       "group": "Integration Options",
       "pages": [
-        "api-reference/integration/direct-api",
-        "api-reference/integration/sdk"
+        "essentials/integration/direct-api",
+        "essentials/integration/sdk"
       ]
     },
     {
