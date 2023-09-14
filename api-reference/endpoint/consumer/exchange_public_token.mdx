@@ -6,11 +6,11 @@ description: "This endpoint Used for initiate refund trnasfer."
 
 ### header
 <ParamField path="checkout_id" type="string">
-  Checkout ID Object
+  The checkout ID that the merchant received in response to the POST Checkout request.
 </ParamField>
 
 <ParamField header="Authorization" type="string">
-  Enter the Consumer User Token
+  The authentication token that you will get in the success response on 'verify_user' api.
 </ParamField>
 
 <ParamField header="link-token" type="string">
@@ -19,11 +19,11 @@ description: "This endpoint Used for initiate refund trnasfer."
 
 ### body
 <ParamField body="public_token" type="string">
-  This is the Plaid's Public Token.
+  The plaid public token that you will get from the frontend side when user select the payment method.
 </ParamField>
 
 <ParamField body="plaid_account_id" type="string">
-  This is the Plaid's Account Id.
+  The plaid_account_id you will get from frontend side when user select the payment method.
 </ParamField>
 
 ### Response

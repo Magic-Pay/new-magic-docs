@@ -6,16 +6,16 @@ description: "This endpoint Used for approve refund request by merchant."
 
 ### header
 <ParamField header="Authorization" type="string">
-  This is the Consumer User Token.
+  The authentication token that you will get in the success response on 'verify_user' api.
 </ParamField>
 
 ### body
 <ParamField body="id" type="string">
-  This is the Refund ID.
+  The refund id you will get when Refund object created.
 </ParamField>
 
 <ParamField body="status" type="string">
-  The Merchant Response to the Refund Request
+  The merchant response on the refund request(Approved or Rejected).
 </ParamField>
 
 ### Response

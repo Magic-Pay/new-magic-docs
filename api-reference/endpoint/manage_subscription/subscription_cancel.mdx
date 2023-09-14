@@ -6,12 +6,12 @@ description: "This endpoint Used for Cancel Subscription."
 
 ### header
 <ParamField header="Authorization" type="string">
-  This is the Consumer User Token.
+  The authentication token that you will get in the success response on 'verify_user' api.
 </ParamField>
 
 ### body
 <ParamField body="id" type="string">
-  Checkout ID Object.
+  The subscription_transaction_uuid that the merchant received in response to the POST Checkout request.
 </ParamField>
 
 ### Response

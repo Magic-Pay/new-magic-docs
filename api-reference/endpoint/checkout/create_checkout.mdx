@@ -6,20 +6,201 @@ description: "This endpoint is used to create a checkout object"
 
 ### header
 <ParamField header="api-key" type="string">
-  Enter the Merchant API key.
+  You will get this API key in the response of 'generate api key button' on merchant object.
 </ParamField>
 
 ### Body
 
-<ParamField body="data" type="string">
-  This is the body of the Checkout Object.
+<ParamField body="amount" type="Decimal" required>
+  .
 </ParamField>
+
+
+<Expandable title="Top level parameters">
+  <ParamField body="amount" type="Decimal" required>
+    The order total inclusive of tax, shipping, and merchant discounts.
+  </ParamField>
+
+  <ParamField body="billing" type="Decimal" required>
+    The subtotal that should be displayed to the consumer.
+  </ParamField>
+  
+  <ParamField body="shipping" type="Decimal" required>
+    The amount of tax on the order.
+  </ParamField>
+  
+  <ParamField body="platform" type="Decimal" required>
+    The amount of shipping cost on the order.
+  </ParamField>
+  
+  <ParamField body="item" type="Decimal">
+    The discount total that should be displayed to the consumer.
+  </ParamField>
+  
+  <ParamField body="created_at" type="DateTime" required>
+    This is used to store create time of checkout object. 
+  </ParamField>
+
+  <ParamField body="updated_at" type="DateTime" required>
+    This is used to store update time of checkout object. 
+  </ParamField>
+
+  <ParamField body="shipping_method" type="String" >
+    This is used to store shipping method. 
+  </ParamField>
+
+  <ParamField body="merchant_checkout_id" type="String" required>
+    The ID of this checkout in the merchant's system which magic will store for shared identification purposes. 
+    This ID should be unique per checkout. 
+  </ParamField>
+
+  <ParamField body="merchant_user_id" type="String" required>
+    The ID of the consumer in the merchant's system which magic will store for shared identification purposes. 
+  </ParamField>
+
+  <ParamField body="redirect_cancel_url" type="UrlField" required>
+    The URL to direct the customer's browser to in the event that they don't successfully confirm their checkout with Magic.
+  </ParamField>
+
+  <ParamField body="redirect_confirm_url" type="UrlField" required>
+    The URL to direct the customer's browser to in the event that they successfully confirm their checkout with Magic.
+  </ParamField>
+
+  <ParamField body="plan_type" type="String">
+    This is used to store update object time. 
+  </ParamField>
+
+  <ParamField body="is_subscription" type="Boolean" required>
+    This is used to indicate subscription status. 
+  </ParamField>
+
+  <ParamField body="user_cohorts" type="ArrayField" required>
+    The array of cohortts inputs. 
+  </ParamField>
+
+</Expandable>
+
+<Expandable title="Amount">
+  <ParamField body="total" type="Decimal" required>
+    The order total inclusive of tax, shipping, and merchant discounts.
+  </ParamField>
+  <ParamField body="subtotal" type="Decimal" required>
+    The subtotal that should be displayed to the consumer.
+  </ParamField>
+  <ParamField body="tax" type="Decimal" required>
+    The amount of tax on the order.
+  </ParamField>
+  <ParamField body="shipping" type="Decimal" required>
+    The amount of shipping cost on the order.
+  </ParamField>
+  <ParamField body="discount_total" type="Decimal">
+    The discount total that should be displayed to the consumer.
+  </ParamField>
+  <ParamField body="currency" type="String" required>
+    The currency in which the amounts are represented.
+  </ParamField>
+</Expandable>
+
+<Expandable title="Billing">
+  <ParamField body="name" type="String" required>
+    The name of the person receiving the shipment of the order.
+  </ParamField>
+  <ParamField body="address_1" type="Decimal" required>
+    The street address where the order will be shipped.
+  </ParamField>
+  <ParamField body="address_2" type="Decimal">
+    The optional apartment, suite, unit, etc. where the order will be shipped.
+  </ParamField>
+  <ParamField body="city" type="Decimal" required>
+    The city of the shipping address.
+  </ParamField>
+  <ParamField body="area" type="Decimal">
+    The area of the shipping address.
+  </ParamField>
+  <ParamField body="zone_code" type="String" required>
+    The state or province abbreviation for the shipping contact, such as 'NY' or 'CA'.
+  </ParamField>
+  <ParamField body="country_code" type="String" required>
+    The country code for the shipping address, such as 'US'.
+  </ParamField>
+  <ParamField body="postal_code" type="String" required>
+    The postal code of the shipping address.
+  </ParamField>
+  <ParamField body="phone_number" type="String">
+    The phone number associated with the shipment. Format: "+11234567890"
+  </ParamField>
+</Expandable>
+
+<Expandable title="Shipping">
+  <ParamField body="name" type="String" required>
+    The name of the person receiving the shipment of the order.
+  </ParamField>
+  <ParamField body="address_1" type="Decimal" required>
+    The street address where the order will be shipped.
+  </ParamField>
+  <ParamField body="address_2" type="Decimal">
+    The optional apartment, suite, unit, etc. where the order will be shipped.
+  </ParamField>
+  <ParamField body="city" type="Decimal" required>
+    The city of the shipping address.
+  </ParamField>
+  <ParamField body="area" type="Decimal">
+    The area of the shipping address.
+  </ParamField>
+  <ParamField body="zone_code" type="String" required>
+    The state or province abbreviation for the shipping contact, such as 'NY' or 'CA'.
+  </ParamField>
+  <ParamField body="country_code" type="String" required>
+    The country code for the shipping address, such as 'US'.
+  </ParamField>
+  <ParamField body="postal_code" type="String" required>
+    The postal code of the shipping address.
+  </ParamField>
+  <ParamField body="phone_number" type="String">
+    The phone number associated with the shipment. Format: "+12223334444"
+  </ParamField>
+</Expandable>
+
+<Expandable title="Platform">
+  <ParamField body="platform_type" type="String">
+    Name of the platform the merchant is on.
+  </ParamField>
+  <ParamField body="platform_version" type="String">
+    Version of the platform the merchant is on.
+  </ParamField>
+</Expandable>
+
+<Expandable title="Item">
+  Item is accept list of items as input, you have to create list of your items and and give that list in the itme's value in the checkout object dictionary.
+  <ParamField body="name" type="String" required>
+    The name of the item.
+  </ParamField>
+  <ParamField body="sku" type="Decimal" required>
+    The SKU of the item.
+  </ParamField>
+  <ParamField body="price" type="Decimal">
+    The price of the item.
+  </ParamField>
+  <ParamField body="quantity" type="Decimal" required>
+    The quantity of the item.
+  </ParamField>
+  <ParamField body="category" type="Decimal">
+    Array of arrays containing category strings.
+  </ParamField>
+  <ParamField body="image" type="String" required>
+    The image of the item.
+  </ParamField>
+  <ParamField body="checkout_object" type="String" required>
+    Current chekout object id. 
+  </ParamField>
+</Expandable>
+
 
 
 ### Response
 
 <ResponseField name="success" type="number">
-  This Response field will return 'Transaction Successful' and status code 200 if the transaction succeeds.
+  This Response field will return unique 'checkout_id' and status code 200 if the transaction succeeds.
 </ResponseField>
 
 <RequestExample>
@@ -36,7 +217,7 @@ curl --location --request POST 'http://127.0.0.1:8000/api/merchants/checkout' \
 
 ```json Response
 {
-  "checkout_id": <checkout_id>
+    "id": "ch-b402978c257143b6970b478a566c808f"
 }
 ```
 

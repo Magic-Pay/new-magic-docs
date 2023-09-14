@@ -7,17 +7,17 @@ description: "This endpoint is used for generate link token."
 ### header
 
 <ParamField path="checkout_id" type="string">
-  Enter the Checkout Id Object.
+  The checkout ID that the merchant received in response to the POST Checkout request.
 </ParamField>
 
 <ParamField header="api-key" type="string">
-  Merchant API key.
+  You will get this API key in the response of 'generate api key button' on merchant object.
 </ParamField>
 
 ### Response
 
 <ResponseField name="success" type="number">
-  This Response field will return 200 if successful.
+  This Response field will return unique 'link_token' and status code 200 if the transaction succeeds.
 </ResponseField>
 
 <RequestExample>

@@ -1,0 +1,47 @@
+---
+title: "SDK Integration"
+description: "Magic Provides Magic SDK which can be integrated with any __javascript framework__."
+---
+
+### The Magic NPM SDK is our easiest and most lightweight way to integrate the Magic product. It's instantly compatible with any Javascript-framework-based store. Look above for how to integrate with our package!
+
+The Magic SDK is a [NPM package](https://www.npmjs.com/package/@magicpay/magicpay-js). Merchants will install this package and it'll make it super easy for them to integrate our product!
+
+This __Magic Pay SDK__ provide three components:
+* [Magic Link button](#magic-link-button)(which will open hosted page)
+* [Marketing Component](#marketing-component)(Magic Info)
+* [Magic Button](#magic-button)(to handle any custom operation)
+
+
+### Magic Link button
+
+This component when clicked (on a merchant's store by a consumer) will open a "Hosted Page", which will essentially be where the consumer carries out the rest of their checkout process.
+
+To use this feature, merchants need to pass a `Checkout ID` and `Link Token` for a particular checkout object and also need to pass an `Onsuccess` and `Onerror` function in which it will handle operation as given in the __Readme.md__ file of that package.
+
+**Parameters**
+
+___checkoutId___ : <blockquote> Pass obtained Checkout id From [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) of Magic.</blockquote>
+
+___linkToken___  : <blockquote> Pass obtained Link Token From [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) of Magic. </blockquote>
+
+___onSuccess___  : <blockquote> Pass a function in which Merchant will call [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic, this function will be called when consumer ads payment method and clicks on pay now button on the hosted page. </blockquote>
+
+___onError___    : <blockquote> Pass a function in which Merchant will perform a custom action if there is any error on processing with bank or consumer, this function will be called when there is any error with adding payment method for authenticating consumer. </blockquote>
+
+___isSandbox___  : <blockquote> Add this parameter if Merchant needs to use Magic in __Sandbox mode__. </blockquote>
+
+
+### Marketing Component
+
+Magic provides a marketing component to promote Magic payment on their store.
+
+Merchants can import it on the appropriate component and call the magic-info element as given in the __Readme.md__ file of the package.
+
+
+### Magic Button
+
+Magic provides a magic button that merchants can use as a "pay now" or a checkout button, similar to Affirm, Paypal, and other comparable alternative checkout buttons.
+
+Merchants can import it on the appropriate component and call the magic-info element as given in the __Readme.md__ file of the package.
+

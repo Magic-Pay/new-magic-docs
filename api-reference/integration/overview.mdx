@@ -1,0 +1,28 @@
+---
+title: "Integration Overview"
+description: "How to understand the overall scope of integrating with Magic."
+---
+
+### Introduction
+Magic is a payment method that allows consumers in the United States to pay for online purchases directly from their bank accounts and earn a minimum of rewards in store credit each time. By paying by bank, consumers can save merchants from credit or debit card processing fees that they normally pay credit card companies and their bank partners. Merchants can then pass savings on to consumers in the form of store credit to incentivize these customers to shop with them again.
+
+
+### Integration Types
+
+Magic offers the following integrations:
+
+* Direct API integration With SDK integration
+
+### Consumer Journey
+
+By integrating with Magic, merchants can offer customers a modern experience for paying by bank and redeeming rewards:
+
+* The customer sees Magic marketing on a merchant’s ecommerce site and can engage with it to learn more about  the value proposition of your partnership with Magic.
+* The customer adds items to their cart and proceeds to checkout. 
+* On the checkout page, the customer can select Magic as their form of payment.
+* The customer provides all normally required checkout-related information to the merchant's frontend and clicks to complete their order.
+* Magic opens a hosted payment experience in which the consumer authenticates to Magic and confirms the bank information Magic should use to transfer the funds for the order to the merchant.
+* Magic confirms the customer’s request, and the customer is sent to the Magic’s order confirmation page.
+* Customer clicks on pay now button, and event is sent to Merchant’s frontend and on that success, merchant confirms the purchase to process payment by calling Magic API where Magic transfers the funds from the customer’s bank account, and Magic assigns rewards credits to the customer’s Magic account and based on that response, customer will be sent to success and error page.
+
+

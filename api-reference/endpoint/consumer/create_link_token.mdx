@@ -6,11 +6,11 @@ description: "This endpoint Used for create link token."
 
 ### header
 <ParamField path="checkout_id" type="string">
-  Checkout Id Object.
+  The checkout ID that the merchant received in response to the POST Checkout request.
 </ParamField>
 
 <ParamField header="Authorization" type="string">
-  Enter the Consumer User Token.
+  The authentication token that you will get in the success response on 'verify_user' api.
 </ParamField>
 
 <ParamField header="link-token" type="string">
@@ -20,7 +20,7 @@ description: "This endpoint Used for create link token."
 ### Response
 
 <ResponseField name="success" type="number">
-  This Response field will return 200 on success.
+  This Response field will return unique 'link_token' and status code 200 if the transaction succeeds.
 </ResponseField>
 
 <RequestExample>
