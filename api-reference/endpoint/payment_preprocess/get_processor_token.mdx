@@ -2,26 +2,26 @@
 title: "Get Processor Token"
 api: "POST http://127.0.0.1:8000/api/merchants/payment_preprocess/get_processor_token/"
 description: "This Api has three steps performed internally:
-        1. Get processor token from Plaid for Dwolla
+        1. Get a processor token from Plaid for Dwolla
         2. Add funding source on Dwolla for Customer Bank account
-        3. Initiate A2A transfer and store Transfer information in Checkout object
+        3. Initiate A2A transfer and store Transfer information in the Checkout object
 "
 ---
 
 ### header
 <ParamField header="api-key" type="string">
-  Merchant API key.
+  This is the Merchant API key.
 </ParamField>
 
 ### body
 <ParamField body="checkout_id" type="string">
-  Checkout object id.
+  Checkout ID Object.
 </ParamField>
 
 ### Response
 
 <ResponseField name="success" type="number">
-  This will return 200 on success.
+  This Response field will return 200 on success.
 </ResponseField>
 
 <RequestExample>
