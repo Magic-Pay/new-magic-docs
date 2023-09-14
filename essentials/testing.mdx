@@ -1,0 +1,22 @@
+---
+title: "Testing"
+description: "Finish your Integration by Processing your First Payment!"
+---
+
+Because of the simplicity of our API, merchants can start or move extremely quickly from sandbox to production. Below are the steps needed to test the API, once integrated:
+
+1. On the Hosted Page, once the consumer clicks on the __Pay Now__ button in the last step of our flow, we'll trigger a payment.
+2. To process a payment, the Merchant can call Magic's [Process Payment API Endpoint](/api-reference/endpoint/payment_preprocess/get_processor_token) from the Merchant’s store.
+3. Or, the consumer can call it themselves via the Hosted Page.
+4. Test Consumers and Merchants can verify if it succeeded by confirming the purchase success screen. After the payment is processed, Magic's API will tell you if it was successful or not. And Merchants can verify by checking their Funding Source wallet balance.
+
+
+## Base Urls for Testing
+
+### Sandbox Base URL
+
+[https://api-dev.join-magic.com/api/](https://api-dev.join-magic.com/api/)
+
+### Live Production Base URL
+
+[https://api.join-magic.com/api/](https://api.join-magic.com/api/)
