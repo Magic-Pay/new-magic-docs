@@ -1,6 +1,6 @@
 ---
 title: "Installing our NPM Package"
-description: "A Hands-on Guide to Integrating our Frontend Components."
+description: "Second Part off an Integration: Integrating our Frontend Components."
 ---
 
 ## How to Use NPM to Integrate Our Project
@@ -9,7 +9,7 @@ At this point, you have already:
 - Created a Merchant Account and have an auto-generated corresponding Funding Source ID
 - Received your API keys from creating your account on the Django Dashboard
 
-### The First Part of the integration: Getting the Components
+### First, Getting the Components
 
 First and foremost, check out our npm package to download our Magic Payments SDK to easily use our product: https://www.npmjs.com/package/@magicpay/magicpay-js. 
 
@@ -42,22 +42,20 @@ export default App;
 
 ### Part 2: Using the Magic Link Button
 
-When you're testing:
-1. To launch the Development Hosted page, add `isSandbox` at tag.
-2. To launch the Production Hosted page, omit `isSandbox` at tag.
+To use this feature, merchants need to pass a `Checkout ID` and `Link Token` for a particular checkout object and also need to pass an `Onsuccess` and `Onerror` function in which it will handle operation as given in the __Readme.md__ file of that package. Every time a consumer checks out with Magic, we will also generate two things: a Checkout ID and Link Token. The Checkout ID allows us to track the checkout, and the Link Token protects the merchant from consumer fraud.
 
-When sending a response after the conclusion of the Magic Hosted Page:
-1. To Send a Response after Operation in Onsuccess to hosted page, use `sendEventToChild` function with the argument response format of:
-```
-response = {
-'type': 'SUCCESS_RESPONSE'
-'message': 'success message',
-},
-response = {
-'type': 'ERROR_RESPONSE',
-'message': 'error message,
-}
-```
+**Parameters**
+
+___checkoutId___ : <blockquote> Pass obtained Checkout id From [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) of Magic.</blockquote>
+
+___linkToken___  : <blockquote> Pass obtained Link Token From [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) of Magic. </blockquote>
+
+___onSuccess___  : <blockquote> Pass a function in which Merchant will call [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic, this function will be called when the consumer ads payment method and clicks on pay now button on the hosted page. That function is called the `sendEventToChild` function. </blockquote>
+
+___onError___    : <blockquote> Pass a function in which Merchant will perform a custom action if there is any error on processing with bank or consumer, this function will be called when there is any error with adding payment method for authenticating consumer. </blockquote>
+
+___isSandbox___  : <blockquote> Add this parameter if Merchant needs to use Magic in __Sandbox mode__. </blockquote>
+
 
 ### Part 3: Magic Marketing Component
 
@@ -76,7 +74,3 @@ function App() {
 
 export default App;
 ```
-
-### Home Stretch: Integrating Checkout ID & Link Token
-
-Every time a consumer checks out with Magic, we generate two things: a Checkout ID and Link Token.
