@@ -46,17 +46,51 @@ To use the Magic Link Feature, merchants need to pass a `Checkout ID` and `Link 
 
 **Parameters**
 
-___checkoutId___ : <blockquote> Pass obtained Checkout id From [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) of Magic.</blockquote>
+- `checkoutId` : Pass obtained Checkout id From [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) of Magic.
 
-___linkToken___  : <blockquote> Pass obtained Link Token From [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) of Magic. </blockquote>
+- `linkToken` : Pass obtained Link Token From [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) of Magic.
 
-___onSuccess___  : <blockquote> Pass a function in which Merchant will call [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic, this function will be called when the consumer ads payment method and clicks on pay now button on the hosted page. That function is called the `sendEventToChild` function. </blockquote>
+- `onSuccess` : Pass a function in which the Merchant will call [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic, this function will be called when the consumer ads payment method and clicks on pay now button on the hosted page. That function is called the `sendEventToChild` function.
 
-___onError___    : <blockquote> Pass a function in which Merchant will perform a custom action if there is any error on processing with bank or consumer, this function will be called when there is any error with adding payment method for authenticating consumer. </blockquote>
+- `onError` : Pass a function in which the Merchant will perform a custom action if there is any error on processing with the bank or consumer, this function will be called when there is any error with adding a payment method for authenticating the consumer.
 
-___isSandbox___  : <blockquote> Add this parameter if Merchant needs to use Magic in __Sandbox mode__. </blockquote>
+- `isSandbox` : Add this parameter if Merchant needs to use Magic in __Sandbox mode__.
 
-For the `Checkout ID` and `Link Token` values, Magic will need to work with the Merchant to correctly route the Checkout ID values and Link Token values to the Link Button object when a consumer presses to pay. 
+For the `Checkout ID` and `Link Token` values, Magic will need to work with the Merchant to correctly route the Checkout ID values and Link Token values to the Link Button object when a consumer presses to pay.
+
+```javascript MagicLinkButton.js
+import "@magicpay/magicpay-js";
+import {sendEventToChild} from "@magicpay/magicpay-js";
+
+function App() {
+  const link_token = "<example_magic_link_token>";
+  const checkout_id = "<example_checkout_object_id>";
+  const onError = (data) => {
+    console.log("Error Occured: ", data);
+  };
+  const onSuccess = (data) => {
+    console.log("Success: ", data);
+    response = {
+      'type': 'SUCCESS_RESPONSE',
+      'message': 'successful',
+    }
+    sendEventToChild(response)
+  };
+  return (
+    <div>
+      <magic-link
+        checkoutId={checkout_id}
+        linkToken={link_token}
+        onSuccess={onSuccess}
+        onError={onError}
+        isSandbox
+      />
+    </div>
+  );
+}
+
+export default App;
+```
 
 
 ### Part 3: Magic Marketing Component
