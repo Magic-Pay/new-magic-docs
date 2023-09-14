@@ -20,12 +20,13 @@ Magic Payments integrations typically consist of the following key elements:
 
 ### Consumer Journey
 
-By integrating with Magic, merchants can offer customers a modern experience for paying by bank and redeeming rewards:
+By integrating with Magic, merchants can offer customers a modern experience for paying by bank for subscription products:
 
-* The customer sees Magic marketing on a merchant’s ecommerce site and can engage with it to learn more about  the value proposition of your partnership with Magic.
-* The customer adds items to their cart and proceeds to checkout. 
-* On the checkout page, the customer can select Magic as their form of payment.
-* The customer provides all normally required checkout-related information to the merchant's frontend and clicks to complete their order.
-* Magic opens a hosted payment experience in which the consumer authenticates to Magic and confirms the bank information Magic should use to transfer the funds for the order to the merchant.
-* Magic confirms the customer’s request, and the customer is sent to the Magic’s order confirmation page.
-* Customer clicks on pay now button, and event is sent to Merchant’s frontend and on that success, merchant confirms the purchase to process payment by calling Magic API where Magic transfers the funds from the customer’s bank account, and Magic assigns rewards credits to the customer’s Magic account and based on that response, customer will be sent to success and error page.
+1. The customer sees Magic marketing on a merchant’s e-commerce site and can engage with it to learn more about Magic, our brand, and our emphasis on security.
+2. The customer adds items to their cart and proceeds to checkout. 
+3. On the checkout page, the customer can select Magic as their form of payment.
+4. The customer provides all normally required checkout-related information to the merchant's frontend and clicks to complete their order.
+5. Magic opens a hosted payment experience in which the consumer authenticates to Magic and confirms the bank information Magic should use to transfer the funds for the order to the merchant.
+6. Magic confirms the customer’s request, and the customer is sent to the Magic’s order confirmation page.
+7. The customer clicks on Magic's pay button, and the event is sent to Merchant’s frontend. When successful, the merchant confirms the purchase to process payment by calling Magic's API. Magic at that point instantly transfers the funds from the customer’s bank account. Otherwise, in the event of a failure, Magic lets the merchant and customer know.
+8. Magic keeps a record of all transactions made through Magic, which can be easily accessible by the merchant.
