@@ -5,6 +5,10 @@ description: 'Overview of our Endpoints and Capabilities We Offer'
 
 Below is a dictionary overview of our API Endpoints with a brief description of the features we offer.
 
+## Creating a Checkout Object
+
+The below endpoints describe the process of a customer making a payment through Magic's checkout. 
+
 #### Creating a Checkout ID
 
 - Create a checkout object using the "merchants/checkout" POST API.
@@ -26,7 +30,7 @@ After authenticating the user, use the "generate_link_token" API to:
 - Register the merchant user on Dwolla.
 - Store the token obtained in the success response for future reference.
 
-### Our API Endpoints
+## Our API Endpoints
 
 Here's a summary of the essential API endpoints in this integration:
 
@@ -47,15 +51,15 @@ Here's a summary of the essential API endpoints in this integration:
 - Use the "generate_link_token" API to register merchant users on Dwolla.
 - Store the obtained token for future use.
 
-### Create Link Token
+#### Create Link Token
 
 To register consumer users on Dwolla, you can create a link token using the "create_link_token" API.
 
-## Link Payment Method
+#### Link Payment Method
 
 Once consumer users are registered on Dwolla, it's time to link their payment methods to your checkout object. Utilize the "exchange_public_token" API for this purpose.
 
-### Initiate Transaction
+#### Initiate Transaction
 
 For initiating transactions, utilize the "get_processor_token" API, which consists of three internal parts:
 
@@ -63,7 +67,7 @@ For initiating transactions, utilize the "get_processor_token" API, which consis
 2. **Add Funding Source on Dwolla for Customer Bank Account**
 3. **Initiate A2A Transfer and Store Transfer Information in Checkout Object**
 
-### Refund Request
+#### Refund Request
 
 Consumer users have the ability to create refund requests using the "consumer_refund_request" API.
 
@@ -71,7 +75,7 @@ Consumer users have the ability to create refund requests using the "consumer_re
 
 Merchants play a pivotal role in the refund process by approving or rejecting refund requests through the "merchant_status_refund_request" API.
 
-### Initiate Refund
+#### Initiate Refund
 
 After a merchant approval of a refund request, you can efficiently transfer funds from the merchant's account to the consumer's account using the "initiate_refund_transfer" API.
 
