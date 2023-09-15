@@ -74,9 +74,17 @@ function App() {
   };
   const onSuccess = (data) => {
     console.log("Success: ", data);
+    ## call process payment api of Magic and send response
+       in given format to function sendEventToChild.
+    ## format of success resonse.
     response = {
       'type': 'SUCCESS_RESPONSE',
       'message': 'successful',
+    }
+    ## format of error resonse.
+    response = {
+      'type': 'ERROR_RESPONSE',
+      'message': 'error message',
     }
     sendEventToChild(response)
   };

@@ -41,7 +41,7 @@
     },
     {
       "group": "Learn More About Magic",
-      "pages": ["learning/authentication", "learning/tech_overview"]
+      "pages": ["learning/authentication", "learning/tech_overview", "learning/user_experience"]
     },
     {
       "group": "Checkout API",
