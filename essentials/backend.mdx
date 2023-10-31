@@ -1,0 +1,114 @@
+---
+title: "Create a backend solution to communicate with Magic's API"
+description: "How to obtaining the checkoutId, linkToken and completing a transaction"
+---
+
+## Setting up API endpoints to comunicate with Magic's API.
+
+As mentioned in the previous section, in order to make your integration secure,
+it is recomended to place all the communication with Magic's API on a backend
+solution. It will hide your bussines logic and API keys from malicious
+activities, ensuring a more secure integration. Your backend solution should
+provide two endpoints to:
+
+- Obtain the checkoutId and linkToken used by Magic Link
+  Button.
+- Complete a transaction using the banking data collected in the hosted page
+  (frontend).
+
+To implement such service you can use any technology that allows making HTTP
+requests (e.g node, python, java, etc.). This documentation page contains code
+snippets that serve as example of Django Views endpoints. Please refer to the official Django documentation for a better understanding, but you should be able to get a good idea on how this can be implemented using
+any other technology.
+
+For a fully functional example please refer to [this github repository](https://github.com/roj4s/magic-merchant-example)
+
+### Getting the checkoutId and linkToken from Magic's API
+
+In order to obtain the necessary parameters used by the Magic button we need to
+create a **Checkout object** by making a `POST` request to Magic API `api/merchants/checkout`
+endpoint. If it succeeds, the response from that request will include the
+`checkoutId` of the newly created checkout object.
+
+Once the `checkoutId` is obtained you can get the `linkToken` by making
+a `POST` request to Magic API
+`api/merchants/checkout/<checkout_id>/generate_link_token` endpoint. Make sure
+to include the `checkoutId` on the url.
+
+This process can be implemented using a Django view as follows:
+
+````python checkoutview.py
+
+from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+import os
+import requests
+
+
+class CheckoutAPI(APIView):
+    def post(self, req):
+        magic_api_url = os.environ["MAGIC_URL"]
+        magic_key = os.environ["MAGIC_API_KEY"]
+
+        checkout_url = f"{magic_api_url}/api/merchants/checkout"
+
+        checkout_resp = requests.post(
+            checkout_url, json=req.data, headers={"api-key": magic_key}
+        )
+
+        if checkout_resp.status_code in (200, 201):
+            checkout_data = checkout_resp.json()
+            checkout_id = checkout_data["id"]
+            link_token_url = f"{magic_api_url}/api/merchants/checkout/{checkout_id}/generate_link_token"
+            link_token_resp = requests.get(
+                link_token_url, headers={"api-key": magic_key}
+            )
+
+            if link_token_resp.status_code in (200, 201):
+                return JsonResponse(link_token_resp.json())
+
+        return Response(checkout_resp.content, status=400)
+```````
+
+### Use Magic API to complete a transaction
+
+In the frontend, once all the banking data is gathered through the hosted page
+it is time to complete the transaction. That is implemented on the `onSuccess`
+callback explained in the previous section. Such callback should include
+a request to an endpoint in the merchant's backend that will request Magic's API
+to complete the transaction.
+
+This endpoint can be implemented using a Django view as follows:
+
+````python completetransactionview.py
+
+from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+import os
+import requests
+
+class CompleteCheckoutAPI(APIView):
+    def get(self, req, checkout_id):
+        magic_api_url = os.environ["MAGIC_URL"]
+        magic_key = os.environ["MAGIC_API_KEY"]
+        checkout_url = (
+            f"{magic_api_url}/api/merchants/payment_preprocess/get_processor_token/"
+        )
+        checkout_resp = requests.post(
+            checkout_url,
+            json={checkout_id: checkout_id},
+            headers={"api-key": magic_key},
+        )
+
+        checkout_data = checkout_resp.json()
+        resp = JsonResponse(checkout_data)
+        if checkout_resp.status_code not in (200, 201):
+            resp.status_code = 400
+
+        return JsonResponse(checkout_data)
+```````
+
+That will be all you need to successfully use Magic as a payment method. With
+all put in place now is a good moment to test your solution.
