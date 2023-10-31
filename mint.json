@@ -30,7 +30,7 @@
     },
     {
       "group": "Get Started",
-      "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/npm", "essentials/testing"]
+      "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/magic-button", "essentials/testing"]
     },
     {
       "group": "Integration Options",
