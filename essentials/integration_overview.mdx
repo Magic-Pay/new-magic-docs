@@ -1,27 +1,39 @@
 ---
 title: "Integration Overview"
-description: "How to understand the overall scope of integrating with Magic."
+description: "How to use Magic as a payment option in your online store page"
 ---
+
+{/* I think this section is out of the page's scope (does not fit here). It adds
+complexity.
 
 ### Integration Types
 
 Magic offers the following integrations:
 
-* __NPM SDK Integration with Direct API Integration__ 
-  1. In __Production Mode__ :
-    - To use this mode, get merchant details and API keys from site, 'https://api.join-magic.com/' and use that.
-    - To activate this mode, do not pass '__isSandbox__' parameter in [NPM SDK](/essentials/integration/sdk).
-  2. In __Sandbox Mode__ :
-    - To use this mode, get merchant details and API keys from site, 'https://api-sandbox.join-magic.com/' and use that.
-    - To activate this mode, pass '__isSandbox__' parameter in [NPM SDK](/essentials/integration/sdk).
-  
+- **NPM SDK Integration with Direct API Integration**
+
+  1.  In **Production Mode** :
+
+      - To use this mode, get merchant details and API keys from site, 'https://api.join-magic.com/' and use that.
+      - To activate this mode, do not pass '**isSandbox**' parameter in [NPM SDK](/essentials/integration/sdk).
+
+  2.  In **Sandbox Mode** :
+
+          - To use this mode, get merchant details and API keys from site, 'https://api-sandbox.join-magic.com/' and use that.
+          - To activate this mode, pass '__isSandbox__' parameter in [NPM
+            SDK](/essentials/integration/sdk).
+
+      */}
+
 ### Integration Overview
 
 Our Integration contains of two core steps:
 
 1. [**Creating a Merchant Account with Magic**](https://magic-21.mintlify.app/essentials/merchant)
-2. [**Implementing Magic as a Payment Method at Checkout**](https://magic-21.mintlify.app/essentials/npm)
-3. *(Optional)* **Incorporating Magic's Accounting Reports** into your financial operations.
+2. Implementing Magic as a Payment Method at Checkout:
+    - [**Use Magic's ready-to-use button**](https://magic-21.mintlify.app/essentials/magic-button)
+    - Create API endpoints to request Magic's API
+- _(Optional)_ **Incorporating Magic's Accounting Reports** into your financial operations.
 
 ### Consumer Journey
 

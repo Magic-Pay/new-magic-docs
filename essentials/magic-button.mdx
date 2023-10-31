@@ -1,0 +1,207 @@
+---
+title: "Use Magic's ready-to-use button"
+description: "Second Part of an Integration: Integrating our Frontend Components."
+---
+
+## Add Magic's ready-to-use button to your frontend app
+
+The magic link button automatically embeds in your merchant's page, a UI
+interface, let's call it hosted page, that guides the consumer throughout the process of getting all the
+information needed to complete the purchase using the consumer's bank account.
+
+At this point, you have already:
+
+- Created a Merchant Account and have an auto-generated corresponding Funding Source ID
+- Received your API keys from creating your account on the Django Dashboard
+
+### First, Getting the Components
+
+First and foremost, check out our npm package to download our Magic Payments SDK to easily use our product: https://www.npmjs.com/package/@magicpay/magicpay-js. Our NPM package is the easiest way to get up and running with Magic!
+
+There are three parts to installing the NPM package and integrating the frontend components:
+
+1. The React "Pay" Button Component, which will be the button that activates the "Magic Link"
+2. The "Magic Link", which is a link, when activated, will open our hosted page, where the customer will link their bank account and complete the transaction with Magic's backend logic and payment processor
+3. The Checkout ID and Link Token. These are both things that need to be generated at the time of checkout. The Link Token guarantees that the checkout is unique and that no fraudster can access your checkout at the same time. The Checkout ID verifies that your checkout is unique and is used to identify the customer's checkout.
+
+The first command to run is to install our NPM package:
+
+```
+npm i @magicpay/magicpay-js
+```
+
+{/* TODO: Move this to another section
+
+### Part 1: Implementing the React "Pay" Button Component
+
+As mentioned earlier, this is a simple React component that is compatible with any Javascript-based frontend. It's simply used as the point to activate the "Magic Link" product.
+
+Below is a snippet of the code for the button. For the `handleButtonClick`, the user will activate the "Magic Link" to access the Hosted Page.
+
+````javascript ReactComponent.js
+import "@magicpay/magicpay-js";
+
+function App() {
+  const handleButtonClick = () => {
+    console.log("Handle Button Click");
+  };
+  return (
+    <div>
+      <magic-btn onClick={handleButtonClick} />
+    </div>
+  );
+}
+
+export default App;
+``` */}
+
+### Using the ready-to-use Magic Link Button
+
+To use the Magic Link Button some parameters has to be obtained from the
+Magic's API (i.e `Checkout ID` and `Link Token`) using http requests. It is recommended such
+parameters to be obtained using a solution located on the Merchant's server
+(i.e using a backend solution), in order to hide the Magic API keys obtained on
+the creation of the Merchant's Account.
+
+The overall app flow to use the Magic Link button would be:
+
+- A request is made from the Merchant's frontend to the Merchant's backend to start gathering
+the parameters.
+- The Merchant's backend requests the parameters from Magic API and pass it to frontend.
+- Once both parameters are gathered in the frontend it can be passed to Magic Link Button.
+
+The Magic Link button will be rendered on the Merchant's frontend and the
+consumer can start a payment, using Magic method, by clicking on it. When the
+consumer clicks on the button, a hosted page is presented with a set of forms
+for the consumer to provide their banking data. This page is controlled by Magic SDK and ensures security on the
+transaction.
+
+Also there are two callbacks that needs to be specified to Magic Link Button.
+Those are `onSuccess` and `onError`. Such callbacks will be called once all the
+data has been gathered in the hosted page. More details on the Magic Link Button
+parameters below.
+
+**Parameters**
+
+- `checkoutId` : Pass obtained Checkout id From [Create Checkout API](/api-reference/endpoint/checkout/create_checkout) of Magic.
+
+- `linkToken` : Pass obtained Link Token From [Get Link Token API](/api-reference/endpoint/checkout/generate_link_token) of Magic.
+
+- `onSuccess` : Pass a function in which the Merchant will call [Process Payment API](/api-reference/endpoint/payment_preprocess/get_processor_token) of Magic
+  to complete the transaction. This function will be called when the consumer
+  clicks on **Pay now** button on the hosted page.
+
+- `onError` : Pass a function in which the Merchant will perform a custom action if there is any error on processing with the bank or consumer, this function will be called when there is any error with adding a payment method for authenticating the consumer.
+
+- `isSandbox` : Add this parameter if Merchant needs to use Magic in **Sandbox mode**.
+
+{/* For the `Checkout ID` and `Link Token` values, Magic will need to work with
+the Merchant to correctly route the Checkout ID values and Link Token values to
+the Link Button object when a consumer presses to pay. */}
+
+Following an example implemented in React that can be used in your frontend app
+to use the Magic Link button.
+
+```javascript MagicLinkButton.js
+import "@magicpay/magicpay-js";
+import {sendEventToChild} from "@magicpay/magicpay-js";
+import env from "react-dotenv";
+
+import { useEffect, useState, useRef, useCallback } from "react";
+
+function App({orderData}) {
+
+  const [magicCheckoutData, setMagicCheckoutData] = useState(null);
+  const url = `${env.MERCHANTS_API_URL}/api/checkout`;
+
+  // Getting checkoutId and linkToken from Merchant's backend
+  useEffect(() => {
+      axios
+        .post(url, orderData)
+        .then((resp) => {
+          if (resp.status === 200) {
+            setMagicCheckoutData(resp.data);
+          }
+        });
+  }, [orderData, url]);
+
+  const onSuccess = useCallback(
+    (data) => {
+      let response = {
+        type: "ERROR_RESPONSE",
+        message: "Unknown",
+      };
+
+      // Completing the transaction after the consumer clicks on Pay Now button
+      // on hosted page
+      axios.get(`${env.MERCHANTS_API_URL}/api/complete_checkout/${magicCheckoutData["checkout_id"]}/`)
+        .then((resp) => {
+          if (resp.status === 200 || resp.status === 201) {
+            response = {
+              type: "SUCCESS_RESPONSE",
+              message: "successful",
+            };
+          }
+        })
+        .catch((err) => {
+          response = {
+            type: "ERROR_RESPONSE",
+            message: err.message,
+          };
+        })
+        .finally(() => {
+          sendEventToChild(response);
+        });
+    },
+    [magicCheckoutData]);
+
+  const onError = (data) => {
+    console.log("Error Occured: ", data);
+  };
+
+  // Setup Magic button callbacks
+  const myRef = useRef(null);
+  useEffect(() => {
+    const element = myRef.current;
+    if (element) {
+      element.onSuccess = onSuccess;
+      element.onError = onError;
+    }
+  }, [magicCheckoutData, onSuccess]);
+
+  return (
+     <div>
+      {magicCheckoutData && (
+          <magic-link
+            checkoutId={magicCheckoutData.checkout_id}
+            linkToken={magicCheckoutData.link_token}
+            onSuccess={onSuccess}
+            OnError={onError}
+            ref={myRef}
+            isSandbox
+          />
+      )}
+    </div>
+  );
+}
+
+export default App;
+````
+{/* TODO: Move this to another section
+### Part 3: Magic Marketing Component
+
+For consumers curious to learn more about Magic, we have a simple Javascript component next to the "Pay" Button Component that users can click to learn more about Magic.
+
+```javascript InfoComponent.js
+import "@magicpay/magicpay-js";
+
+function App() {
+  return (
+    <div>
+      <magic-info />
+    </div>
+  );
+}
+
+export default App;
+``` */}
