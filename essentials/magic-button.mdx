@@ -14,6 +14,8 @@ At this point, you have already:
 - Created a Merchant Account and have an auto-generated corresponding Funding Source ID
 - Received your API keys from creating your account on the Django Dashboard
 
+For a fully functional example please refer to [this github repository](https://github.com/roj4s/magic-merchant-example)
+
 ### First, Getting the Components
 
 First and foremost, check out our npm package to download our Magic Payments SDK to easily use our product: https://www.npmjs.com/package/@magicpay/magicpay-js. Our NPM package is the easiest way to get up and running with Magic!
@@ -176,7 +178,7 @@ function App({orderData}) {
             checkoutId={magicCheckoutData.checkout_id}
             linkToken={magicCheckoutData.link_token}
             onSuccess={onSuccess}
-            OnError={onError}
+            onError={onError}
             ref={myRef}
             isSandbox
           />
@@ -187,6 +189,12 @@ function App({orderData}) {
 
 export default App;
 ````
+
+That should be all you need to render a fully functional button that allows
+payments with Magic in your frontend solution. Now you need to connect the
+dots and implement the endpoints used in the frontend to obtain the
+`checkoutId` and `linkToken` and to complete the purchase transaction.
+
 {/* TODO: Move this to another section
 ### Part 3: Magic Marketing Component
 
