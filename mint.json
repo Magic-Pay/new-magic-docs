@@ -33,13 +33,6 @@
       "pages": ["essentials/integration_overview", "essentials/merchant", "essentials/magic-button", "essentials/backend", "essentials/testing"]
     },
     {
-      "group": "Integration Options",
-      "pages": [
-        "essentials/integration/sdk",
-        "essentials/integration/direct-api"
-      ]
-    },
-    {
       "group": "Learn More About Magic",
       "pages": ["learning/authentication", "learning/tech_overview", "learning/user_experience"]
     },
