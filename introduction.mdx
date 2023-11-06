@@ -1,22 +1,24 @@
 ---
 title: Hello, World!
-description: 'Welcome to Magic Pay!'
+description: "Welcome to Magic Pay!"
 ---
 
-<img
-  className="block dark:hidden"
-  src="/logo/magic.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/logo/magic.svg"
-  alt="Hero Dark"
-/>
+<img className="block dark:hidden" src="/logo/magic.svg" alt="Hero Light" />
+<img className="hidden dark:block" src="/logo/magic.svg" alt="Hero Dark" />
 
-Magic is a sophisticated e-commerce platform specialized in payment processing. We provide an advanced Software Development Kit (SDK) that ensures seamless integration for our clients.
+Magic is payments product that allows merchants to seamlessly accept bank payments. For an end consumer, it's an alternative checkout option on the checkout page just like credit card payments, but for direct transactions between consumer's and merchant's bank accounts.
+
+We provide ready-to-use UI components and APIs that ensures seamless integration for our clients. Our "Pay by bank" checkout button can be added to a merchant's pre-existing checkout flow for one-off or subscription payments. We essentially enable a new seamless experience to help merchants collect payments via bank transfers mainly over ACH. Also we handle all of the complexity of the payment reels, the compliance lift, and the legal lift behind our simple plug and play APIs and SDKs.
+
+**Advantages of using Magic over other payment methods**:
+
+- 80% lower processing fee, we replace credit-cards and all the middlemen with our infrastructure so we can significantly cut down on processing.
+- We primarily process payments over the ACH rails but to turn ACH into a suitable engine under the hood where it's a viable card like payment method for the merchants.
+- Real-time balance checks supported by novel software and middleware. Our API verifies real-time balances for ACH so the merchant knows if a customer has sufficient balance to cover the purchase which protects the consumers against the overdraft fee and the merchants against the NSF fee.
+- Guaranteed settlement through a proprietary Machine Learning model that analyzes over 1000 risk factors to assess the likelihood of the purchase.
+- No declines related to stolen or expired cards: the chance of failure related to lost, stolen, or expired cards vanishes. Direct debit payments have a subscription failure rate of only 0.5%, which is orders of magnitude lower than cards.
+- Authenticated payments in the bank environment with 2FA: unauthorized transaction chargebacks are eliminated entirely.
 
 For prompt integration procedures, kindly refer to our [**Get Started**](https://magic-21.mintlify.app/essentials/integration_overview) section. Our integration process is streamlined to a mere two steps, enabling swift payment acceptance via Magic.
 
 For detailed insights into the functionality of our platform, please consult our [**API Reference**](https://magic-21.mintlify.app/api-reference/endpoint/checkout/get_checkout) API Reference section.
-
